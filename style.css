@@ -36,6 +36,7 @@ header{
     justify-content: center;
     position: relative;
     left: 50px;
+    margin-bottom: 30px;
 }
 
 .search-input{
@@ -45,6 +46,7 @@ header{
     outline: none;
     border: none;
     font-size: 15px;
+    padding-left: 20px;
 }
 
 .search-btn{
@@ -90,7 +92,8 @@ header{
     font-weight: 700;
     display: flex;
     justify-content: center;
-    font-size: 70px;
+    font-size: 50px;
+    text-align: center;
 }
 
 .lyrics{
@@ -110,4 +113,11 @@ header{
     height: 100px;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.status-msg{
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: 20px;
 }
