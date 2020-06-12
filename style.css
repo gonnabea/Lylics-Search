@@ -85,3 +85,14 @@ header{
 .song-title{
     font-weight: 700;
 }
+
+.chosen-title{
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.lyrics{
+    
+}

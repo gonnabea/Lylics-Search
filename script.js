@@ -18,9 +18,7 @@ async function handleSearch(e){
             api_token: data.api_token
         }
     }).then((res) => {
-        console.log(res);
         handleApi(res)
-        
     })
 }
 
@@ -51,7 +49,7 @@ function handleApi(res){
             div2.className = "chosen-title";
             p.className = "lyrics";
             div2.innerHTML = `${songTitle} - ${artist}`;
-            p.innerHTML = lyrics;
+            p.innerHTML = lyrics.split("\n").join("<br />");
             resultArea.appendChild(div2);
             resultArea.appendChild(p);
         })
