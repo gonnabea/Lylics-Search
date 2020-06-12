@@ -45,12 +45,27 @@ function handleApi(res){
         div.addEventListener("click", () => {
             resultArea.innerHTML = null;
             div2 = document.createElement("div"),
-            p = document.createElement("p")
+            p = document.createElement("p"),
+            mediaObj = JSON.parse(songs[i].media),
             div2.className = "chosen-title";
             p.className = "lyrics";
+            span2.className = "links";
             div2.innerHTML = `${songTitle} - ${artist}`;
             p.innerHTML = lyrics.split("\n").join("<br />");
             resultArea.appendChild(div2);
+            for(let i=0 ; i<mediaObj.length ; i++){
+                if(mediaObj[i].provider === "youtube"){
+                    const a = document.createElement("a"),
+                    linkContainer = document.createElement("div");
+                    a.href = mediaObj[i].url;
+                    a.className = "youtube-link";
+                    linkContainer.className = "link-container"
+                    a.target="_blank";
+                    a.innerHTML = `<img src="https://img.icons8.com/plasticine/100/000000/youtube-squared.png"/>`
+                    resultArea.appendChild(linkContainer)
+                    linkContainer.appendChild(a)
+                }
+            }
             resultArea.appendChild(p);
         })
     }
