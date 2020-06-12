@@ -1,6 +1,7 @@
 const searchForm = document.getElementById("searchForm"),
 searchInput = document.getElementById("searchInput"),
-resultArea = document.getElementById("resultArea")
+resultArea = document.getElementById("resultArea"),
+statusMsg = document.getElementById("statusMsg")
 
 
 
@@ -26,7 +27,39 @@ async function handleSearch(e){
 function handleApi(res){
     console.log(res)
     const songs = res.data.result;
-    resultArea.innerHTML = songs[1].full_title;
+    resultArea.innerHTML =null;
+    for(let i=0 ; i< songs.length ; i++){
+        const songTitle = songs[i].title,
+        artist = songs[i].artist,
+        lyrics = songs[i].lyrics,
+        div = document.createElement("div"),
+        span = document.createElement("span"),
+        span2 = document.createElement("span2");
+        div.className = "song_container";
+        span.className = "song-title";
+        span2.className = "song-artist";
+        
+        span.innerHTML = songTitle;
+        span2.innerHTML = artist;
+        div.appendChild(span);
+        div.appendChild(span2);
+        resultArea.appendChild(div)
+        div.addEventListener("click", () => {
+            resultArea.innerHTML = null;
+            div2 = document.createElement("div"),
+            p = document.createElement("p")
+            div2.className = "chosen-title";
+            p.className = "lyrics";
+            div2.innerHTML = `${songTitle} - ${artist}`;
+            p.innerHTML = lyrics;
+            resultArea.appendChild(div2);
+            resultArea.appendChild(p);
+        })
+    }
+}
+
+function showLyrics(){
+
 }
 
 function init(){
