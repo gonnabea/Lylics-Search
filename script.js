@@ -56,23 +56,26 @@ function handleApi(res){
             for(let i=0 ; i<mediaObj.length ; i++){
                 if(mediaObj[i].provider === "youtube"){
                     const a = document.createElement("a"),
-                    linkContainer = document.createElement("div");
+                    linkContainer = document.createElement("div"),
+                    url = mediaObj[i].url,
+                    videoContainer = document.createElement("div");
                     a.href = mediaObj[i].url;
                     a.className = "youtube-link";
                     linkContainer.className = "link-container"
                     a.target="_blank";
                     a.innerHTML = `<img src="https://img.icons8.com/plasticine/100/000000/youtube-squared.png"/>`
+                    let embedUrl = url.split("v=")[1];
+                    embedUrl = `https://www.youtube.com/embed/${embedUrl}`;
+                    const video = `<iframe width="1519" height="537" src=${embedUrl} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    videoContainer.innerHTML = video;
                     resultArea.appendChild(linkContainer)
                     linkContainer.appendChild(a)
+                    resultArea.appendChild(videoContainer)
                 }
             }
             resultArea.appendChild(p);
         })
     }
-}
-
-function showLyrics(){
-
 }
 
 function init(){
